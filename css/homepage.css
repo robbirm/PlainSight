@@ -142,3 +142,17 @@ body::before {
     .badge.unlocked img {
       filter: none;
     }
+	
+/* Animations */ 
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+@-webkit-keyframes pulse {
+  0% { -webkit-transform: scale(1); }
+  50% { -webkit-transform: scale(1.15); }
+  100% { -webkit-transform: scale(1); }
+}
