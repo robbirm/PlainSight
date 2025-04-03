@@ -64,3 +64,9 @@ border:3px solid black
   50% { transform: scale(1.15); }
   100% { transform: scale(1); }
 }
+
+@-webkit-keyframes pulse {
+  0% { -webkit-transform: scale(1); }
+  50% { -webkit-transform: scale(1.15); }
+  100% { -webkit-transform: scale(1); }
+}
