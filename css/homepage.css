@@ -71,7 +71,6 @@ body::before {
     .menu-buttons button {
       padding: 12px 24px;
 	  font-family: 'Atma', sans-serif;
-
       font-size: 300%;
       cursor: pointer;
       border: none;
