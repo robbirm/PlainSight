@@ -112,7 +112,6 @@ body::before {
     .level-select {
       margin-top: 60px;
       width: 90%;
-	  min-width:600px;
 	  max-height:50vh;
 	  position:absolute;
 	    opacity: 0;
