@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+  <title>Plain Sight</title>
+  <link rel="stylesheet" href="Css\styles-main.css">
+  <link rel="stylesheet" href="Css\menu.css">
+  <link rel="stylesheet" href="Css\level1.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atma:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body data-level="level1">
+
+<div class="game-container" id="game">
+
+<!--Start of Game Wrapper -->
+  <div id="imageWrapper">
+    <img src="backgrounds/level 1.jpg" class="game-image" id="gameImage">
+    <!-- Click zones will be added dynamically -->
+	<!-- Clickable Objects Events -->
+<div id="houseInterior1">
+  <img src="backgrounds/level1/house-interior1.png"/>
+  <div id="houseInterior1exit"></div>
+ <!-- Inside House -->
+ 
+</div>
+  
+  <div id="caveInterior1">
+  <img src="backgrounds/level1/cave-interior1.png"/>
+  <div id="caveInterior1exit">Exit Cave</div>
+ <!-- Inside Cave -->
+ 
+
+ </div>
+ 
+  <div id="caveInterior2">
+  <img src="backgrounds/level1/cave-interior2.png"/>
+  <div id="caveInterior2exit"></div>
+ <!-- Inside Cave -->
+ 
+ </div>  
+<!-- Clickable Objects -->
+<div id="houseDoor1"></div>
+ <div id="caveDoor1"></div>
+ <div id="caveDoor2"></div>
+
+
+<!-- Floating Buttons -->
+<button class="menu-button" onclick="toggleMenuPanel()"><img src="icons\home.png"/></button>
+<button class="items-button" onclick="toggleChecklist()"><img id="treasureOpen" src="icons\treasureOpen.png"/><img id="treasureClosed" src="icons\treasureClosed.png"/></button>
+
+<!-- Menu Panel -->
+<div class="menu-panel" id="menuPanel">
+  <button onclick="window.location.href='index.html'">Home</button>
+  <button onclick="window.location.href='trophies.html'">Trophies</button>
+  <button onclick="resetGame()">Reset</button>
+  <button onclick="exitGame()">Exit</button>
+</div>
+
+
+</div>
+
+<div id="popupOverlay" class="popup-overlay" style="display:none;">
+  <div class="popup-content">
+    <span id="popupClose" class="popup-close">✖</span>
+    <img id="popupImage" src="" alt="Hidden item">
+  </div>
+</div>
+
+<!--End of Game Wrapper -->
+
+<!-- Checklist Panel  -->
+<div class="checklist-panel" id="checklistPanel">
+  <div class="progress-bar-container">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+  <div class="checklist-title">Hidden Items</div>
+  <div id="hintList"></div>
+</div>
+
+</div>
+  
+<!-- Audio -->
+
+<audio id="openSound" src="sounds/doorOpen.mp3"> </audio>
+<audio id="brushSound" src="sounds/brush.mp3"> </audio>
+<audio id="closeSound" src="sounds/doorClose.mp3"></audio>
+
+<!-- Scripts -->
+
+<script src="script\level 1.js"></script>
+<script src="script\savedata.js"></script>
+<script src="script\Hints.js"></script>
+<script src="script\menu.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,5 @@
+clean up menu button
+add a homepage
+finish first level
+add doors
+add sound effects to found idems

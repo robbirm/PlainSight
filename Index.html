@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Plain Sight - Main Menu</title>
+   <link rel="stylesheet" href="Css\styles-main.css">
+  <link rel="stylesheet" href="Css\homepage.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atma:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <h1>Plain Sight</h1>
+  <div class="menu-buttons">
+    <button onclick="startGame()">Start Game</button>
+    <button onclick="showLevelSelect()">Level Select</button>
+	 <button onclick="window.location.href='map.html'">Map</button>
+    <button onclick="window.location.href='trophies.html'">Trophies</button>
+  </div>
+  <div class="level-select" id="levelSelect" style="display:none;">
+    <div class="level-row"onclick="window.location.href='level 1.html'">
+      <div class="level-name">Level 1</div>
+      <div class="level-icons">
+        <div class="badge" data-level="level1"><img src="icons/trophy.png" alt="Level 1"></div>
+        <div class="badge" data-gnome="level1"><img src="icons/gnome.png" alt="Gnome 1"></div>
+        <img src="icons/galaxy.png" alt="Collectible">
+      </div>
+    </div>
+    <div class="level-row" onclick="window.location.href='level 2.html'">
+      <div class="level-name" >Level 2</div>
+      <div class="level-icons">
+       <div class="badge" data-level="level2"><img src="icons/trophy.png" alt="Level 2"></div>
+       <div class="badge" data-gnome="level2"><img src="icons/gnome.png" alt="Gnome 2"></div>
+        <img src="icons/galaxy.png" alt="Collectible">
+      </div>
+    </div>
+	    <div class="level-row">
+      <div class="level-name">Level 3</div>
+      <div class="level-icons">
+        <img src="icons/trophy.png" alt="Trophy">
+        <img src="icons/gnome.png" alt="Gnome">
+        <img src="icons/galaxy.png" alt="Collectible">
+      </div>
+    </div>    
+	<div class="level-row">
+      <div class="level-name">Level 4</div>
+      <div class="level-icons">
+        <img src="icons/trophy.png" alt="Trophy">
+        <img src="icons/gnome.png" alt="Gnome">
+        <img src="icons/galaxy.png" alt="Collectible">
+      </div>
+    </div>    
+	<div class="level-row">
+      <div class="level-name">Level 5</div>
+      <div class="level-icons">
+        <img src="icons/trophy.png" alt="Trophy">
+        <img src="icons/gnome.png" alt="Gnome">
+        <img src="icons/galaxy.png" alt="Collectible">
+      </div>
+    </div>
+		<div class="level-row">
+      <div class="level-name">Level 5</div>
+      <div class="level-icons">
+        <img src="icons/trophy.png" alt="Trophy">
+        <img src="icons/gnome.png" alt="Gnome">
+        <img src="icons/galaxy.png" alt="Collectible">
+      </div>
+    </div>
+		<div class="level-row">
+      <div class="level-name">Level 5</div>
+      <div class="level-icons">
+        <img src="icons/trophy.png" alt="Trophy">
+        <img src="icons/gnome.png" alt="Gnome">
+        <img src="icons/galaxy.png" alt="Collectible">
+      </div>
+    </div>
+		<div class="level-row">
+      <div class="level-name">Level 5</div>
+      <div class="level-icons">
+        <img src="icons/trophy.png" alt="Trophy">
+        <img src="icons/gnome.png" alt="Gnome">
+        <img src="icons/galaxy.png" alt="Collectible">
+      </div>
+    </div>
+    <!-- Add more levels as needed -->
+  </div>
+<script src="script\savedata.js"></script>
+  <script>
+    function showLevelSelect() {
+      document.getElementById('levelSelect').style.display = 'block';
+    }
+
+    function startGame() {
+      window.location.href = 'level 1.html';
+    }
+  </script>
+</body>
+</html>
