@@ -1,0 +1,135 @@
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Atma', sans-serif;
+      background: #111;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+	    background-image: url('../Backgrounds/fantasy-map.png');
+  background-size: 180%; /* Zoomed in */
+  background-repeat: repeat;
+  animation: panBackground 120s linear infinite;
+  height: 100vh;
+
+    }
+	
+
+/* Slow pan animation */
+@keyframes panBackground {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+.menu-buttons, h1, .level-select {
+  position: relative;
+  z-index: 1;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  opacity: 0.3; /* Optional: to soften the map visibility */
+  z-index: 0;
+}
+
+
+    h1 {
+      margin-bottom: 40px;
+      font-size: 48px;
+	    text-shadow: 0px 0px 6px rgba(0,0,0,1);
+    }
+
+    .menu-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+
+    }
+
+    .menu-buttons button {
+      padding: 12px 24px;
+      font-size: 20px;
+      cursor: pointer;
+      border: none;
+      border-radius: 8px;
+      background: #444;
+      color: white;
+      transition: background 0.2s;
+	  	  box-shadow: 0px 0px 15px rgba(255,255,255,1)
+    }
+
+    .menu-buttons button:hover {
+      background: #666;
+    }
+
+    .level-select {
+      margin-top: 60px;
+      max-width: 600px;
+      width: 90%;
+    }
+
+    .level-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px;
+      background: #222;
+      border-radius: 8px;
+      margin-bottom: 12px;
+    }
+
+    .level-name {
+      font-size: 20px;
+    }
+
+    .level-icons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .level-icons img {
+      width: 28px;
+      height: 28px;
+      filter: grayscale(100%) opacity(0.4);
+    }
+
+    .level-icons img.unlocked {
+      filter: none;
+    }
+
+/* Badge Unlock Colors */
+
+    .badge.unlocked {
+      background: #222;
+      border-color: gold;
+    }
+	
+	.badge.unlocked img:hover {
+	border-color: green;
+	cursor:pointer;
+	transform-origin: center center; 
+	transform: rotate(360deg);
+	transition:.5s ease-in-out}
+    
+	.badge img:hover {
+	cursor:pointer;
+	transform-origin: center center; 
+	transform: scale(90%);
+	transition:.3s ease-in-out}
+
+    .badge.unlocked img {
+      filter: none;
+    }
