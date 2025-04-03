@@ -1,0 +1,58 @@
+body, html {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      font-family: sans-serif;
+	  overflow-y: scroll;  scrollbar-width: none;        /* Firefox */
+  -ms-overflow-style: none;     /* IE and Edge */
+  font-family: "Atma", system-ui;
+  font-weight: 500;
+  
+    }
+.game-container {
+  overflow: none;
+  display: flex;
+  justify-content: center;
+}
+#gameImage {
+  width: auto;
+  height: auto;
+  max-width: none;
+  display: block;
+  transition: filter 0.3s ease;
+
+}
+
+    .marker, .click-zone {
+      position: absolute;
+      transform: translate(-50%, -50%);
+    }
+   /* .marker {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 3px solid green;
+      background-color: rgba(0, 255, 0, 0.3);
+      pointer-events: none;
+	  z-index:10
+    } */
+	.marker {
+      width: 60px;
+      height: 60px;  background-image: url('../icons/x-icon.png');
+background-size: cover;
+      pointer-events: none;
+	  z-index:10
+    }
+
+    .click-zone {
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+      background-color: transparent;
+    }
+
+#imageWrapper {
+border:3px solid black
+}
+
+	
