@@ -9,7 +9,7 @@
       align-items: center;
       justify-content: center;
       min-height: 100vh;
-	    background-image: url('../Backgrounds/fantasy-map.png');
+	    background-image: url('../backgrounds/fantasy-map.png');
   background-size: 180%; /* Zoomed in */
   background-repeat: repeat;
   animation: panBackground 120s linear infinite;
@@ -64,12 +64,15 @@ body::before {
       display: flex;
       flex-direction: column;
       gap: 20px;
+	  	  width:75%;
 
     }
 
     .menu-buttons button {
       padding: 12px 24px;
-      font-size: 20px;
+	  font-family: 'Atma', sans-serif;
+
+      font-size: 300%;
       cursor: pointer;
       border: none;
       border-radius: 8px;
