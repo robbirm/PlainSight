@@ -6,13 +6,13 @@
     { id: 'obj3', top: '55.6%', left: '9%', hint: 'Shoot the target' },
     { id: 'obj4', top: '69.9%', left: '98.4%', hint: 'Someone should clean that up...' },
     { id: 'obj5', top: '35.45%', left: '79%', hint: 'I spy a cranky cottage' },
-    { id: 'obj6', top: '60.7%', left: '54.3%', width: '17px', height: '17px', hint: 'x' },
-    { id: 'obj7', top: '43%', left: '30%', hint: 'x' },
-    { id: 'obj8', top: '4%', left: '80%', hint: 'Its blowing the wrong way!' },
-    { id: 'obj9', top: '19.9%', left: '8.4%', hint: 'x' },
+    //{ id: 'obj6', top: '60.7%', left: '54.3%', width: '17px', height: '17px', hint: 'x' },
+    //{ id: 'obj7', top: '43%', left: '30%', hint: 'x' },
+    { id: 'obj8', top: '71.6%', left: '69.8%', hint: 'Its blowing the wrong way!' },
+    //{ id: 'obj9', top: '19.9%', left: '8.4%', hint: 'x' },
     { id: 'obj10', top: '61.05%', left: '79%', hint: 'That is a long snake!' },
-	{ id: 'obj11', top: '0.7%', left: '54.3%', width: '17px', height: '17px', hint: 'x' },
-    { id: 'obj12', top: '11%', left: '10%', hint: 'x' },
+	//{ id: 'obj11', top: '0.7%', left: '54.3%', width: '17px', height: '17px', hint: 'x' },
+    //{ id: 'obj12', top: '11%', left: '10%', hint: 'x' },
     { id: 'obj13', top: '46.9%', left: '61.5%', hint: 'First the worst, second the best' },
     { id: 'obj14', top: '82.9%', left: '7.4%', hint: 'Buried treasure?' },
     { id: 'obj15', top: '61.05%', left: '89%', hint: 'Mr mouse didnt expect visitors' },
@@ -133,3 +133,11 @@ houseInterior1exit.addEventListener('click', closeHouse1);
 caveInterior1exit.addEventListener('click', closeCave1);
 
 /* caveInterior2exit.addEventListener('click', closeCave2); */
+
+if (checkCompletion('level1')) {
+  updateLevelIcons(); // Optional helper if you want a visual update right away
+}
+
+window.addEventListener('load', () => {
+  updateLevelIcons();
+});

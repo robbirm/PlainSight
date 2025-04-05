@@ -1,11 +1,7 @@
 const secretTriggers = [
-  { id: 'qm1', top: '10%', left: '20%' },
-  { id: 'qm2', top: '22%', left: '70%' },
-  { id: 'qm3', top: '40%', left: '15%' },
-  { id: 'qm4', top: '50%', left: '60%' },
-  { id: 'qm5', top: '65%', left: '30%' },
-  { id: 'qm6', top: '80%', left: '85%' },
-  { id: 'qm7', top: '90%', left: '45%' }
+  { id: 'qm1', top: '97.7%', left: '9.6%' },
+  { id: 'qm2', top: '54.6%', left: '83.3%' },
+  { id: 'qm3', top: '62.6%', left: '4.6%' }
 ];
 
 let foundSecrets = 0;
@@ -20,19 +16,22 @@ secretTriggers.forEach(obj => {
   el.style.top = obj.top;
   el.style.left = obj.left;
 
+  // If already found, make visible and skip counting again
   if (foundQMs[obj.id]) {
-    el.style.display = 'none';
+    el.classList.add('revealed');
     foundSecrets++;
   }
 
   document.getElementById('imageWrapper').appendChild(el);
 
   el.addEventListener('click', () => {
-    el.style.display = 'none';
-    foundSecrets++;
-    foundQMs[obj.id] = true;
-    localStorage.setItem('foundQMs_level1', JSON.stringify(foundQMs));
-    checkAllSecretsFound();
+    if (!foundQMs[obj.id]) {
+      el.classList.add('revealed');
+      foundSecrets++;
+      foundQMs[obj.id] = true;
+      localStorage.setItem('foundQMs_level1', JSON.stringify(foundQMs));
+      checkAllSecretsFound();
+    }
   });
 });
 
@@ -43,7 +42,6 @@ function checkAllSecretsFound() {
 }
 
 function showGnome() {
-  // Avoid duplicates
   if (!document.getElementById('gnomeReveal')) {
     const gnomeImage = document.createElement('img');
     gnomeImage.src = 'backgrounds/level1/gnome1.png';
@@ -63,21 +61,22 @@ function showGnome() {
       }
     });
 
-    // ✅ THIS is the only line changed:
     if (localStorage.getItem('gnomeUnlocked_level1') === 'true') {
       gnomeImage.classList.add('found');
+	  updateLevelIcons(); // ✅ This triggers the icon update instantly
     }
 
     document.getElementById('imageWrapper').appendChild(gnomeImage);
   }
 }
 
-// Show gnome if all ?'s were found
+// Initial checks
 if (foundSecrets === secretTriggers.length) {
   showGnome();
 }
 
-// Re-show gnome if it was already clicked/found
 if (gnomeWasClicked) {
   showGnome();
+  updateLevelIcons();
+
 }

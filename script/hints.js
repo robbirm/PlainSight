@@ -31,18 +31,25 @@ items.forEach(item => {
 
   if (foundItems[item.id]) addMarker(zone);
 
-  zone.addEventListener('click', () => {
-    if (!foundItems[item.id]) {
-      foundItems[item.id] = true;
-      allProgress[levelId] = foundItems;
-      localStorage.setItem('progress', JSON.stringify(allProgress));
-	  foundSound.currentTime = 0;
-	  foundSound.play();
-      addMarker(zone);
-      markHintAsFound(item.id);
-      updateProgressBar();
+zone.addEventListener('click', () => {
+  if (!foundItems[item.id]) {
+    foundItems[item.id] = true;
+    allProgress[levelId] = foundItems;
+    localStorage.setItem('progress', JSON.stringify(allProgress));
+    
+    addMarker(zone);
+    markHintAsFound(item.id);
+    updateProgressBar();
+
+    foundSound.currentTime = 0;
+    foundSound.play();
+
+    // Call after saving and UI updates
+    if (typeof updateLevelIcons === 'function') {
+      updateLevelIcons();
     }
-  });
+  }
+});
 
   // ✅ Create hint with camera icon and dynamic image path
   const hint = document.createElement('div');
