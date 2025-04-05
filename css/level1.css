@@ -5,6 +5,7 @@
   height: 1920px;
   min-width: 1080px;
   width:auto;
+  overflow: hidden;
 }
 
 

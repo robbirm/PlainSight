@@ -7,19 +7,27 @@ body, html {
   -ms-overflow-style: none;     /* IE and Edge */
   font-family: "Atma", system-ui;
   font-weight: 500;
-  width:100%;
-  
+    background-color:red;
+}
+
     }
+	body::-webkit-scrollbar {
+  display: none;              /* Chrome, Safari, Opera */
+}
 .game-container {
-  overflow: none;
+  overflow: hidden;
   display: flex;
-  justify-content: center;
-  width:auto
+  justify-content: center;  align-items: center;
+  width:auto;
+  overflow-x:scroll;
+  padding:0;margin:0;
+  scrollbar-width: none;      /* Firefox */
+  -ms-overflow-style: none;   /* IE & Edge */ 
 }
 #gameImage {
   width: auto;
   height: auto;
-  max-width: none;
+
   display: block;
   transition: filter 0.3s ease;
 
@@ -56,7 +64,7 @@ background-size: cover;
     }
 
 #imageWrapper {
-border:3px solid black;
+border-bottom:1px solid black;
   margin-bottom:200px;
 }
 
