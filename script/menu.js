@@ -1,13 +1,4 @@
-window.addEventListener('load', () => {
-  const img = document.getElementById('gameImage');
-  const wrapper = document.getElementById('imageWrapper');
-  wrapper.style.height = img.offsetHeight + 'px';
-}); 
-window.addEventListener('resize', () => {
-  const img = document.getElementById('gameImage');
-  const wrapper = document.getElementById('imageWrapper');
-  wrapper.style.height = img.offsetHeight + 'px';
-});
+
  // === MENU CONTROLS ===
 function toggleMenuPanel() {
   const panel = document.getElementById("menuPanel");

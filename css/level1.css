@@ -3,9 +3,10 @@
 #imageWrapper {
   position: relative;
   height: 1920px;
-  width: 1080px;
+  min-width: 1080px;
+  width:auto;
 }
-html {height:1920px}
+
 
 /*Interactables */
 
