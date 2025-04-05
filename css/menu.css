@@ -39,7 +39,7 @@ height:100px;
 
     .menu-button:hover{
       background: rgba(186, 72, 51, 1);
-      transform: scale(1.05);
+
     }
 
     .menu-panel {
