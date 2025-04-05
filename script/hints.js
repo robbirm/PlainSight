@@ -9,6 +9,7 @@ const foundItems = allProgress[levelId] || {};
 // ✅ MUST STAY: DOM hooks
 const wrapper = document.getElementById('imageWrapper');
 const hintList = document.getElementById('hintList');
+const foundSound = document.getElementById('foundSound');
 
 // === ITEM ZONE RENDERING ===
 items.forEach(item => {
@@ -35,6 +36,8 @@ items.forEach(item => {
       foundItems[item.id] = true;
       allProgress[levelId] = foundItems;
       localStorage.setItem('progress', JSON.stringify(allProgress));
+	  foundSound.currentTime = 0;
+	  foundSound.play();
       addMarker(zone);
       markHintAsFound(item.id);
       updateProgressBar();
@@ -93,3 +96,27 @@ document.addEventListener('click', function (e) {
     document.getElementById('popupImage').src = '';
   }
 });
+
+// Menu buttons bottom of screen
+
+  function checkScrollForButtonSize() {
+    const scrollPosition = window.scrollY + window.innerHeight;
+    const documentHeight = document.documentElement.scrollHeight;
+    const threshold = 100; // how close to the bottom before the buttons enlarge
+
+    const buttons = document.querySelectorAll('.menu-button, .items-button');
+	const buttonsHints = document.querySelectorAll('.checklist-panel, .checklist-panel.active');
+	const buttonsMenu = document.querySelectorAll('.menu-panel, .menu-panel.active');
+
+    if (scrollPosition + threshold >= documentHeight) {
+      buttons.forEach(btn => btn.classList.add('big'));
+	  buttonsHints.forEach(btn => btn.classList.add('big'));
+	  buttonsMenu.forEach(btn => btn.classList.add('big'));
+    } else {
+      buttons.forEach(btn => btn.classList.remove('big'));	  
+	  buttonsHints.forEach(btn => btn.classList.remove('big'));
+	  buttonsMenu.forEach(btn => btn.classList.remove('big'));
+    }
+  }
+
+  window.addEventListener('scroll', checkScrollForButtonSize);
