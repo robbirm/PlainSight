@@ -116,6 +116,31 @@ width: auto; height: auto;
   cursor: pointer;  z-index:6
 }
 
+/* Gnome */
+
+.secret-qm {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background-color:red;
+  z-index: 6;
+  cursor: pointer;
+}
+
+#gnomeReveal {
+  position: absolute;
+  top: 2.3%; /* adjust as needed */
+  left: 76.8%;
+  width: 260px;
+  height: auto;
+  z-index: 10;
+  transition:2s ease-in-out
+}
+
+#gnomeReveal.found {
+  filter: drop-shadow(0 0 10px gold);
+}
+
 
 /* Animations */ 
 

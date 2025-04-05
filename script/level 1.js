@@ -18,9 +18,7 @@
     { id: 'obj15', top: '61.05%', left: '89%', hint: 'Mr mouse didnt expect visitors' },
 		
   ];
-  
-  
-  
+
   // === Clickables ===
 const backgroundImage = document.getElementById('gameImage');
 
