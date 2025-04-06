@@ -3,10 +3,11 @@
 #imageWrapper {
   position: relative;
   height: 1920px;
-
   width:auto;
+  min-width:1080px;
   overflow-y: hidden;
   overflow-x: scroll;
+  
 }
 
 

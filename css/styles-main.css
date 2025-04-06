@@ -15,8 +15,8 @@ body, html {
 }
 .game-container {
   overflow: hidden;
-  display: flex;
-  justify-content: center;  align-items: center;
+  position:absolute;
+  display: block;
   width:auto;
   overflow-x:scroll;
   padding:0;margin:0;
@@ -24,14 +24,10 @@ body, html {
   -ms-overflow-style: none;   /* IE & Edge */ 
 }
 #gameImage {
-  width: auto;
+  width: 1080px;
   height: auto;
-
   display: block;
   transition: filter 0.3s ease;
-
-
-
 }
 
     .marker, .click-zone {
