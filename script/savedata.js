@@ -9,18 +9,21 @@ window.itemMap = {
 };
 
 // === Global utility functions ===
+
+// Check if all required items for a level are found
 window.checkCompletion = function(levelId) {
   const progress = JSON.parse(localStorage.getItem('progress')) || {};
   const found = progress[levelId] || {};
   return window.itemMap[levelId] && window.itemMap[levelId].every(id => found[id]);
 };
 
+// Update all level/gnome/extra icons
 window.updateLevelIcons = function () {
   const progress = JSON.parse(localStorage.getItem('progress')) || {};
   const gnomes = JSON.parse(localStorage.getItem('gnomes')) || {};
   const extras = JSON.parse(localStorage.getItem('extras')) || {};
 
-  // Update trophy badges
+  // Update trophy icons (completion)
   document.querySelectorAll('[data-level]').forEach(badge => {
     const level = badge.dataset.level;
     const found = progress[level] || {};
@@ -31,17 +34,17 @@ window.updateLevelIcons = function () {
     }
   });
 
-  // Update gnome badges
+  // Update gnome icons
   document.querySelectorAll('[data-gnome]').forEach(badge => {
-    const level = badge.dataset.gnome;
-    if (gnomes[level]) {
+    const gnomeKey = badge.dataset.gnome; // e.g., "level1.2"
+    if (gnomes[gnomeKey]) {
       badge.classList.add('unlocked');
     } else {
       badge.classList.remove('unlocked');
     }
   });
 
-  // Update extras badges
+  // Update extras (e.g., galaxy)
   document.querySelectorAll('[data-extra]').forEach(badge => {
     const key = badge.dataset.extra;
     if (extras[key]) {
@@ -52,9 +55,7 @@ window.updateLevelIcons = function () {
   });
 };
 
-// === Call on page load (after DOM is ready) ===
+// === Auto-run on page load ===
 window.addEventListener('load', () => {
-  if (typeof updateLevelIcons === 'function') {
-    updateLevelIcons();
-  }
+  window.updateLevelIcons?.();
 });

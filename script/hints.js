@@ -114,15 +114,21 @@ document.addEventListener('click', function (e) {
     const buttons = document.querySelectorAll('.menu-button, .items-button');
 	const buttonsHints = document.querySelectorAll('.checklist-panel, .checklist-panel.active');
 	const buttonsMenu = document.querySelectorAll('.menu-panel, .menu-panel.active');
+	const progressBar = document.querySelectorAll('.progress-bar-overlay');
+	const levelIconsOverlay = document.querySelectorAll('.level-icons-overlay');
 
     if (scrollPosition + threshold >= documentHeight) {
       buttons.forEach(btn => btn.classList.add('big'));
 	  buttonsHints.forEach(btn => btn.classList.add('big'));
 	  buttonsMenu.forEach(btn => btn.classList.add('big'));
+	  progressBar.forEach(btn => btn.classList.add('big'));
+	  levelIconsOverlay.forEach(btn => btn.classList.add('big'));
     } else {
       buttons.forEach(btn => btn.classList.remove('big'));	  
 	  buttonsHints.forEach(btn => btn.classList.remove('big'));
 	  buttonsMenu.forEach(btn => btn.classList.remove('big'));
+	  progressBar.forEach(btn => btn.classList.remove('big'));
+	  levelIconsOverlay.forEach(btn => btn.classList.remove('big'));
     }
   }
 

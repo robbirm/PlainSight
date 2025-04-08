@@ -23,12 +23,6 @@ body, html {
   scrollbar-width: none;      /* Firefox */
   -ms-overflow-style: none;   /* IE & Edge */ 
 }
-#gameImage {
-  width: 1080px;
-  height: auto;
-  display: block;
-  transition: filter 0.3s ease;
-}
 
     .marker, .click-zone {
       position: absolute;
