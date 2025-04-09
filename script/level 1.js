@@ -49,6 +49,7 @@ let caveOpen2 = false;
 
 const object5 = document.querySelector('[data-id="obj5"]');
 const object15 = document.querySelector('[data-id="obj15"]');
+const object3 = document.querySelector('[data-id="obj3"]');
 
 // Function to open the house
 function openHouse1() {
@@ -141,3 +142,18 @@ if (checkCompletion('level1')) {
 window.addEventListener('load', () => {
   updateLevelIcons();
 });
+
+
+// Sound effects with specific objs
+
+window.addEventListener('DOMContentLoaded', () => {
+  const object3 = document.querySelector('[data-id="obj3"]');
+  if (object3) {
+    object3.addEventListener('click', function handleClick() {
+      shotSound.currentTime = 0;
+      shotSound.play();
+      object3.removeEventListener('click', handleClick); // ✅ Remove after 1st play
+    });
+  }
+});
+

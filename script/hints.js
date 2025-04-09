@@ -9,7 +9,15 @@ const foundItems = allProgress[levelId] || {};
 // ✅ MUST STAY: DOM hooks
 const wrapper = document.getElementById('imageWrapper');
 const hintList = document.getElementById('hintList');
+
+// Universal Sounds
+
 const foundSound = document.getElementById('foundSound');
+const squeakSound = document.getElementById('squeakSound');
+const ooohSound = document.getElementById('ooohSound');
+const gnomeSound = document.getElementById('gnomeSound');
+const qmSound = document.getElementById('qmSound');
+const shotSound = document.getElementById('shotSound');
 
 // === ITEM ZONE RENDERING ===
 items.forEach(item => {

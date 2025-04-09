@@ -29,6 +29,8 @@ secretTriggers1.forEach(obj => {
       el.classList.add('revealed');
       foundSecrets1++;
       foundQMs1[obj.id] = true;
+	  		    qmSound.currentTime = 0;
+    qmSound.play();
       localStorage.setItem('foundQMs_level1', JSON.stringify(foundQMs1));
       checkAllSecretsFound();
     }
@@ -58,6 +60,8 @@ function showGnome() {
         const gnomes = JSON.parse(localStorage.getItem('gnomes')) || {};
         gnomes['level1.1'] = true;
         localStorage.setItem('gnomes', JSON.stringify(gnomes));
+		    gnomeSound.currentTime = 0;
+    gnomeSound.play();
  updateLevelIcons();
         gnomeImage1.classList.add('found');
       }
