@@ -6,7 +6,7 @@
     { id: 'obj3', top: '55.6%', left: '9%', hint: 'Shoot the target' },
     { id: 'obj4', top: '69.9%', left: '98.4%', hint: 'Someone should clean that up...' },
     { id: 'obj5', top: '35.45%', left: '79%', hint: 'I spy a cranky cottage' },
-    { id: 'obj6', top: '60.7%', left: '54.3%', width: '17px', height: '17px', hint: 'x' },
+    { id: 'obj6', top: '83.7%', left: '25.9%', hint: 'a Crab!' },
     { id: 'obj7', top: '54.6%', left: '23.6%', hint: 'The odd staff out' },
     { id: 'obj8', top: '71.6%', left: '69.8%', hint: 'Its blowing the wrong way!' },
     { id: 'obj9', top: '26.6%', left: '98.7%', hint: '<3' },
