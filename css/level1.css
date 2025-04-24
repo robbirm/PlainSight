@@ -17,6 +17,13 @@
 
 /*Interactables */
 
+#shotTarget{  display: none;
+  position: absolute;
+  top: 54.27%;   /* use % not px */
+  left: 7.15%;
+  z-index: 5;
+  transition: filter 0.3s ease;}
+
 #houseInterior1 {
   display: none;
   position: absolute;
@@ -122,9 +129,9 @@ width: auto; height: auto;
   cursor: pointer;  z-index:6
 }
 
-/* Gnome */
+/* Gnome1 */
 
-.secret-qm {
+.secret-qm1 {
   position: absolute;
   width: 40px;
   height: 40px;
@@ -134,23 +141,90 @@ width: auto; height: auto;
   transition: opacity 0.3s ease;
   z-index: 6;
   cursor: pointer;
-  border-radius:100%
+  border-radius:100%; opacity: 0;
 }
 
-.secret-qm.revealed {
+.secret-qm1.revealed {
   opacity: 1;
 }
 
-#gnomeReveal {
+#gnomeReveal1 {
   position: absolute;
   top: 2.3%; /* change this to your gnome location */
   left: 76.8%;
   width: 260px;
   height: auto;
   z-index: 10;
+  opacity:0
 }
 
-#gnomeReveal.found {
+#gnomeReveal1.found {
+  filter: drop-shadow(0 0 10px gold);
+}
+
+/* Gnome2 */
+
+.secret-qm2 {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(131, 116, 1, 0.8);
+  background-color:rgba(247, 225, 54, 0.36);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 6;
+  cursor: pointer;
+  border-radius:100%; opacity: 0;
+}
+
+.secret-qm2.revealed {
+  opacity: 1;
+}
+
+#gnomeReveal2 {
+  position: absolute;
+  top: 2.3%; /* change this to your gnome location */
+  left: 6.8%;
+  width: 260px;
+  height: auto;
+  z-index: 10;
+  opacity:0
+}
+
+#gnomeReveal2.found {
+  filter: drop-shadow(0 0 10px gold);
+}
+
+/* Gnome3 */
+
+.secret-qm3 {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(131, 116, 1, 0.8);
+  background-color:rgba(247, 225, 54, 0.36);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 6;
+  cursor: pointer;
+  border-radius:100%; opacity: 0;
+}
+
+.secret-qm3.revealed {
+  opacity: 1;
+}
+
+#gnomeReveal3 {
+  position: absolute;
+  top: 22.3%; /* change this to your gnome location */
+  left: 16.8%;
+  width: 260px;
+  height: auto;
+  z-index: 10;
+  opacity:0
+}
+
+#gnomeReveal3.found {
   filter: drop-shadow(0 0 10px gold);
 }
 

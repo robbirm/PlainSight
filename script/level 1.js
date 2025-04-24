@@ -6,13 +6,13 @@
     { id: 'obj3', top: '55.6%', left: '9%', hint: 'Shoot the target' },
     { id: 'obj4', top: '69.9%', left: '98.4%', hint: 'Someone should clean that up...' },
     { id: 'obj5', top: '35.45%', left: '79%', hint: 'I spy a cranky cottage' },
-    //{ id: 'obj6', top: '60.7%', left: '54.3%', width: '17px', height: '17px', hint: 'x' },
-    //{ id: 'obj7', top: '43%', left: '30%', hint: 'x' },
+    { id: 'obj6', top: '60.7%', left: '54.3%', width: '17px', height: '17px', hint: 'x' },
+    { id: 'obj7', top: '54.6%', left: '23.6%', hint: 'The odd staff out' },
     { id: 'obj8', top: '71.6%', left: '69.8%', hint: 'Its blowing the wrong way!' },
-    //{ id: 'obj9', top: '19.9%', left: '8.4%', hint: 'x' },
+    { id: 'obj9', top: '26.6%', left: '98.7%', hint: '<3' },
     { id: 'obj10', top: '61.05%', left: '79%', hint: 'That is a long snake!' },
-	//{ id: 'obj11', top: '0.7%', left: '54.3%', width: '17px', height: '17px', hint: 'x' },
-    //{ id: 'obj12', top: '11%', left: '10%', hint: 'x' },
+	{ id: 'obj11', top: '12.3%', left: '39.3%', width: '17px', height: '17px', hint: 'Cool Chicken' },
+    { id: 'obj12', top: '96.4%', left: '61%', hint: 'He is married' },
     { id: 'obj13', top: '46.9%', left: '61.5%', hint: 'First the worst, second the best' },
     { id: 'obj14', top: '82.9%', left: '7.4%', hint: 'Buried treasure?' },
     { id: 'obj15', top: '61.05%', left: '89%', hint: 'Mr mouse didnt expect visitors' },
@@ -24,6 +24,8 @@ const backgroundImage = document.getElementById('gameImage');
 
 
 // Get elements
+const shotTarget = document.getElementById('shotTarget');
+
 const houseInterior1 = document.getElementById('houseInterior1');
 const houseDoor1 = document.getElementById('houseDoor1');
 const houseInterior1exit = document.getElementById('houseInterior1exit');
@@ -50,6 +52,7 @@ let caveOpen2 = false;
 const object5 = document.querySelector('[data-id="obj5"]');
 const object15 = document.querySelector('[data-id="obj15"]');
 const object3 = document.querySelector('[data-id="obj3"]');
+const object7 = document.querySelector('[data-id="obj7"]');
 
 // Function to open the house
 function openHouse1() {
@@ -65,8 +68,13 @@ function openHouse1() {
 
 function openCave1() {
   caveInterior1.style.display = 'block';
+    const object7 = document.querySelector('[data-id="obj7"]');
+  if (object7) object7.style.display = 'block';
+  if (object7) object7.style.zIndex = '10';
  backgroundImage.style.filter = 'blur(5px)';
  houseInterior1.style.filter = 'blur(5px)';
+ caveInterior2.style.filter = 'blur(5px)';
+  shotTarget.style.filter = 'blur(5px)';
   brushSound.currentTime = 0;
   brushSound.play();
   caveOpen1 = true;
@@ -94,8 +102,12 @@ function closeHouse1() {
 
 function closeCave1() {
   caveInterior1.style.display = 'none';
+    const object7 = document.querySelector('[data-id="obj7"]');
+  if (object7) object7.style.display = 'none';
     backgroundImage.style.filter = 'none';
 	houseInterior1.style.filter = 'none';;
+	 caveInterior2.style.filter = 'none';
+	   shotTarget.style.filter = 'none';
   brushSound.currentTime = 0;
   brushSound.play();
   caveOpen1 = false;
@@ -152,6 +164,7 @@ window.addEventListener('DOMContentLoaded', () => {
     object3.addEventListener('click', function handleClick() {
       shotSound.currentTime = 0;
       shotSound.play();
+	  shotTarget.style.display ='block';
       object3.removeEventListener('click', handleClick); // ✅ Remove after 1st play
     });
   }
