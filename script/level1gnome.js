@@ -104,7 +104,13 @@ if (gnomeWasClicked1) {
 //
 
 const secretTriggers2 = [
-  { id: 'qm1', top: '7.7%', left: '9.6%' },
+  { id: 'qm8', top: '37.4%', left: '5.8%' },
+  { id: 'qm9', top: '8.1%', left: '72.1%' },
+  { id: 'qm10', top: '23.2%', left: '37.8%' },
+  { id: 'qm11', top: '66.1%', left: '35.7%' },
+  { id: 'qm12', top: '95.7%', left: '43.2%' },
+  { id: 'qm13', top: '43%', left: '81.2%' },
+  { id: 'qm14', top: '54.5%', left: '53.3%' },
 ];
 
 let foundSecrets2 = 0;

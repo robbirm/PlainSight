@@ -53,6 +53,8 @@ const object5 = document.querySelector('[data-id="obj5"]');
 const object15 = document.querySelector('[data-id="obj15"]');
 const object3 = document.querySelector('[data-id="obj3"]');
 const object7 = document.querySelector('[data-id="obj7"]');
+const qm13 = document.querySelector('[data-id="qm13"]');
+const qm14 = document.querySelector('[data-id="qm14"]');
 
 // Function to open the house
 function openHouse1() {
@@ -61,6 +63,9 @@ function openHouse1() {
   const object5 = document.querySelector('[data-id="obj5"]');
   if (object5) object5.style.display = 'block';
   if (object5) object5.style.zIndex = '10';
+    const qm13 = document.querySelector('[data-id="qm13"]');
+  if (qm13) qm13.style.display = 'block';
+  if (qm13) qm13.style.zIndex = '10';
   openSound.currentTime = 0;
   openSound.play();
   doorOpen1 = true;
@@ -69,8 +74,11 @@ function openHouse1() {
 function openCave1() {
   caveInterior1.style.display = 'block';
     const object7 = document.querySelector('[data-id="obj7"]');
+	const qm14 = document.querySelector('[data-id="qm14"]');
   if (object7) object7.style.display = 'block';
   if (object7) object7.style.zIndex = '10';
+  if (qm14) qm14.style.display = 'block';
+  if (qm14) qm14.style.zIndex = '10';
  backgroundImage.style.filter = 'blur(5px)';
  houseInterior1.style.filter = 'blur(5px)';
  caveInterior2.style.filter = 'blur(5px)';
@@ -95,6 +103,8 @@ function closeHouse1() {
   houseInterior1.style.display = 'none';
   const object5 = document.querySelector('[data-id="obj5"]');
   if (object5) object5.style.display = 'none';
+    const qm13 = document.querySelector('[data-id="qm13"]');
+  if (qm13) qm13.style.display = 'none';
   closeSound.currentTime = 0;
   closeSound.play();
   doorOpen1 = false;
@@ -104,6 +114,8 @@ function closeCave1() {
   caveInterior1.style.display = 'none';
     const object7 = document.querySelector('[data-id="obj7"]');
   if (object7) object7.style.display = 'none';
+      const qm14 = document.querySelector('[data-id="qm14"]');
+  if (qm14) qm14.style.display = 'none';
     backgroundImage.style.filter = 'none';
 	houseInterior1.style.filter = 'none';;
 	 caveInterior2.style.filter = 'none';

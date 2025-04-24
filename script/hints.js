@@ -27,11 +27,8 @@ items.forEach(item => {
   zone.style.top = item.top;
   zone.style.left = item.left;
 
-  // ✅ OPTIONAL: Hide certain items at the start (level-specific logic)
-  if (levelId === 'level1' && item.id === 'obj5') {
-    zone.style.display = 'none';
-  }
-  if (levelId === 'level1' && item.id === 'obj15') {
+  // Hide certain items until specific areas are unlocked
+  if (levelId === 'level1' && (item.id === 'obj5' || item.id === 'obj15')) {
     zone.style.display = 'none';
   }
 
@@ -39,27 +36,25 @@ items.forEach(item => {
 
   if (foundItems[item.id]) addMarker(zone);
 
-zone.addEventListener('click', () => {
-  if (!foundItems[item.id]) {
-    foundItems[item.id] = true;
-    allProgress[levelId] = foundItems;
-    localStorage.setItem('progress', JSON.stringify(allProgress));
-    
-    addMarker(zone);
-    markHintAsFound(item.id);
-    updateProgressBar();
+  zone.addEventListener('click', () => {
+    if (!foundItems[item.id]) {
+      foundItems[item.id] = true;
+      allProgress[levelId] = foundItems;
+      localStorage.setItem('progress', JSON.stringify(allProgress));
 
-    foundSound.currentTime = 0;
-    foundSound.play();
+      addMarker(zone);
+      markHintAsFound(item.id);
+      updateProgressBar();
+      foundSound.currentTime = 0;
+      foundSound.play();
 
-    // Call after saving and UI updates
-    if (typeof updateLevelIcons === 'function') {
-      updateLevelIcons();
+      if (typeof updateLevelIcons === 'function') {
+        updateLevelIcons();
+      }
     }
-  }
-});
+  });
 
-  // ✅ Create hint with camera icon and dynamic image path
+  // === Build hint image-based checklist ===
   const hint = document.createElement('div');
   hint.id = `hint-${item.id}`;
   hint.className = 'hint';
@@ -67,11 +62,19 @@ zone.addEventListener('click', () => {
   const imagePath = `backgrounds/${levelId}/icons/${item.id}.png`;
 
   hint.innerHTML = `
-    <span>${item.hint}</span>
-    <img src="icons/camera-icon.png" class="hint-icon" data-img="${imagePath}" alt="View item">
+    <img src="${imagePath}" class="hint-thumb" alt="Item to find">
+    <div class="hint-text">${item.hint}</div>
   `;
 
+  // Hide the hint if already found
   if (foundItems[item.id]) hint.classList.add('found');
+
+  // Toggle hint text on image click
+  hint.querySelector('.hint-thumb').addEventListener('click', function () {
+    const text = this.nextElementSibling;
+    text.style.display = text.style.display === 'block' ? 'none' : 'block';
+  });
+
   hintList.appendChild(hint);
 });
 

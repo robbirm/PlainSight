@@ -169,7 +169,7 @@ width: auto; height: auto;
   width: 40px;
   height: 40px;
   border: 1px solid rgba(131, 116, 1, 0.8);
-  background-color:rgba(247, 225, 54, 0.36);
+  background-color:rgba(37, 134, 136, 0.84);
   opacity: 0;
   transition: opacity 0.3s ease;
   z-index: 6;
@@ -247,3 +247,4 @@ width: auto; height: auto;
 
 
 [data-id="obj2"] {width: 60px; height: 60px}
+[data-id="qm13"], [data-id="qm14"] {display:none}
