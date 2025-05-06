@@ -1,46 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
   <title>Fantasy Map</title>
-  <link href="https://fonts.googleapis.com/css2?family=Atma:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Atma:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     html, body {
       margin: 0;
       padding: 0;
-      overflow-x: auto;
-      overflow-y: hidden;
-      font-family: 'Atma', cursive;
-      background-color: black;
       height: 100vh;
+      background: black;
+      font-family: 'Atma', cursive;
+      overflow: hidden;
+    }
+
+    .map-wrapper {
+      width: 100vw;
+      height: 100vh;
+      overflow: auto;
+      position: relative;
     }
 
     .map-container {
       position: relative;
-      height: 100vh;
-      width: 3000px; /* Very wide scrollable map */
+      display: inline-block;
     }
 
     .map-image {
-      position: absolute;
-      top: 0;
-      left: 0;
-      height: 100vh;
+      display: block;
       width: auto;
-      z-index: 0;
+      height: auto;
+      max-width: none;
+      max-height: none;
     }
 
     .marker {
       position: absolute;
       width: 30px;
       height: 30px;
-      background-color: red;
+      background-color: red; /* default */
       border: 3px solid white;
       border-radius: 50%;
       cursor: pointer;
       z-index: 2;
       transition: transform 0.2s;
+    }
+
+    .marker.green {
+      background-color: green;
+    }
+
+    .marker.gold {
+      background-color: gold;
     }
 
     .marker:hover {
@@ -56,50 +67,199 @@
       border: none;
       font-size: 16px;
       cursor: pointer;
-      z-index: 3;
+      z-index: 10;
       border-radius: 8px;
       box-shadow: 2px 2px 10px rgba(0,0,0,0.5);
     }
 
-    /* Fun Scrollbar */
-    ::-webkit-scrollbar {
-      height: 14px;
+    #levelTab {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #1e1e1e;
+      color: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 0 25px rgba(255,255,255,0.2);
+      z-index: 20;
+      min-width: 320px;
+      text-align: center;
     }
 
-    ::-webkit-scrollbar-thumb {
-      background: linear-gradient(45deg, #ff0000, #ff8800);
-      border-radius: 7px;
+    #levelTab h2 {
+      margin-top: 0;
+      font-size: 28px;
     }
 
-    ::-webkit-scrollbar-track {
-      background: #222;
+    .close-tab {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #444;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      font-size: 18px;
+      cursor: pointer;
     }
 
-    /* Prevent zooming from breaking layout */
-    body {
-      transform-origin: top left;
-      transform: scale(1);
+    .start-button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 18px;
+      background: #fff;
+      color: black;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .start-button:hover {
+      background: #ffd700;
+    }
+
+    .level-icons {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .level-icons img {
+      width: 48px;
+      height: 48px;
+      filter: grayscale(100%) opacity(0.4);
+    }
+
+    .level-icons img.unlocked {
+      filter: none;
+      border: 3px solid gold;
+      border-radius: 8px;
     }
   </style>
 </head>
 <body>
-  <div class="map-container">
-    <img src="backgrounds/fantasy-map.png" alt="Fantasy Map" class="map-image">
+  <div class="home-button" onclick="window.location.href='index.html'">Homepage</div>
 
-    <button class="home-button" onclick="window.location.href='index.html'">Homepage</button>
+  <div class="map-wrapper">
+    <div class="map-container" id="mapContainer">
+      <img src="backgrounds/fantasy-map.png" alt="Fantasy Map" class="map-image" />
 
-    <!-- Fixed-position red markers, absolute to the map container -->
-    <div class="marker" style="top: 200px; left: 300px;" onclick="goToLevel(1)"></div>
-    <div class="marker" style="top: 400px; left: 800px;" onclick="goToLevel(2)"></div>
-    <div class="marker" style="top: 600px; left: 1200px;" onclick="goToLevel(3)"></div>
-    <div class="marker" style="top: 300px; left: 1600px;" onclick="goToLevel(4)"></div>
-    <div class="marker" style="top: 100px; left: 1900px;" onclick="goToLevel(5)"></div>
+      <!-- Level Markers -->
+      <div class="marker" style="top: 10%; left: 10%;" onclick="openLevelTab(1)"></div>
+      <div class="marker" style="top: 40%; left: 27%;" onclick="openLevelTab(2)"></div>
+      <div class="marker" style="top: 60%; left: 40%;" onclick="openLevelTab(3)"></div>
+      <div class="marker" style="top: 30%; left: 53%;" onclick="openLevelTab(4)"></div>
+      <div class="marker" style="top: 10%; left: 63%;" onclick="openLevelTab(5)"></div>
+    </div>
+  </div>
+
+  <!-- Level Info Popup -->
+  <div id="levelTab">
+    <button class="close-tab" onclick="document.getElementById('levelTab').style.display='none'">×</button>
+    <h2 id="levelTitle">Level Info</h2>
+    <div class="level-icons" id="levelIcons"></div>
+    <button class="start-button" onclick="startLevel()">Start Level</button>
   </div>
 
   <script>
-    function goToLevel(level) {
-      window.location.href = `level ${level}.html`;
+    let currentLevel = null;
+
+    function openLevelTab(level) {
+      const progress = JSON.parse(localStorage.getItem('progress')) || {};
+      const levelKey = `level${level}`;
+      const unlocked = window.itemMap?.[levelKey]?.every(id => (progress[levelKey] || {})[id]);
+
+      if (level > 1) {
+        const prev = `level${level - 1}`;
+        const prevComplete = window.itemMap?.[prev]?.every(id => (progress[prev] || {})[id]);
+        if (!prevComplete) {
+          alert(`Level ${level} is locked. Complete Level ${level - 1} first!`);
+          return;
+        }
+      }
+
+      currentLevel = level;
+      document.getElementById("levelTitle").textContent = `Level ${level}`;
+      document.getElementById("levelTab").style.display = "block";
+      renderLevelIcons(level);
     }
+
+    function startLevel() {
+      if (currentLevel) {
+        window.location.href = `level ${currentLevel}.html`;
+      }
+    }
+
+    function renderLevelIcons(level) {
+      const levelIcons = document.getElementById("levelIcons");
+      levelIcons.innerHTML = "";
+
+      const trophy = `level${level}`;
+      const gnomes = [`level${level}.1`, `level${level}.2`, `level${level}.3`];
+      const galaxy = `galaxy${level}`;
+
+      const icons = [
+        { key: trophy, src: "icons/trophy.png" },
+        ...gnomes.map(key => ({ key, src: "icons/gnome.png" })),
+        { key: galaxy, src: "icons/galaxy.png" }
+      ];
+
+      const gnomeData = JSON.parse(localStorage.getItem('gnomes')) || {};
+      const extrasData = JSON.parse(localStorage.getItem('extras')) || {};
+
+      icons.forEach(icon => {
+        const img = document.createElement("img");
+        img.src = icon.src;
+        img.alt = icon.key;
+
+        const isTrophy = icon.key.startsWith("level") && !icon.key.includes(".");
+        const isUnlocked = isTrophy
+          ? (typeof window.checkCompletion === 'function' && window.checkCompletion(icon.key))
+          : gnomeData[icon.key] || extrasData[icon.key];
+
+        if (isUnlocked) {
+          img.classList.add("unlocked");
+        }
+
+        levelIcons.appendChild(img);
+      });
+    }
+
+    function updateMarkerColors() {
+      const progress = JSON.parse(localStorage.getItem('progress')) || {};
+      const gnomeData = JSON.parse(localStorage.getItem('gnomes')) || {};
+
+      for (let level = 1; level <= 5; level++) {
+        const marker = document.querySelector(`.marker[onclick="openLevelTab(${level})"]`);
+        if (!marker) continue;
+
+        const levelKey = `level${level}`;
+        const gnomeKeys = [`${levelKey}.1`, `${levelKey}.2`, `${levelKey}.3`];
+
+        const hasTrophy = typeof window.checkCompletion === 'function' && window.checkCompletion(levelKey);
+        const hasAllGnomes = gnomeKeys.every(key => gnomeData[key]);
+
+        if (hasTrophy && hasAllGnomes) {
+          marker.classList.add('gold');
+        } else if (hasTrophy) {
+          marker.classList.add('green');
+        }
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      updateMarkerColors();
+    });
   </script>
+
+  <script src="script/savedata.js"></script>
 </body>
 </html>

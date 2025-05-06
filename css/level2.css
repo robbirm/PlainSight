@@ -1,0 +1,250 @@
+/*Level Size*/
+
+#imageWrapper {
+  position: relative;
+  height: 1920px;
+  width:auto;
+  min-width:1920px;
+  overflow-y: hidden;
+  overflow-x: hidden;
+}
+#gameImage {
+  width: 1920px;
+  height: auto;
+  display: block;
+  transition: filter 0.3s ease;
+}
+
+/*Interactables */
+
+#shotTarget{  display: none;
+  position: absolute;
+  top: 54.27%;   /* use % not px */
+  left: 7.15%;
+  z-index: 5;
+  transition: filter 0.3s ease;}
+
+#houseInterior1 {
+  display: none;
+  position: absolute;
+  top: 28.19%;   /* use % not px */
+  left: 63.15%;
+  z-index: 5;
+  transition: filter 0.3s ease;
+}
+#houseInterior1exit
+{
+    position: absolute;
+    top: 60%;
+    left: 21%;
+    width: 120px;
+    height: 120px;
+	border:0px solid red;
+    cursor: pointer;
+}
+#houseInterior1 img{
+width: auto; height: auto; border-radius: 4px;
+}
+#houseDoor1
+{
+  position: absolute;
+  top: 39.5%;
+  left: 75%;
+  width: 70px;
+  height: 110px;
+  cursor: pointer;
+}
+#obj {
+	display:none;
+}
+
+/* Cave */
+
+#caveInterior1 {
+  display: none;
+  position: absolute;
+  top: 44.20%;   /* use % not px */
+  left:5.05%;
+  z-index: 5;
+    transition: filter 0.3s ease;
+}
+#caveInterior1exit
+{
+    position: absolute;
+    top: 87.3%;
+    right: 26.5%;
+    width: 80px;
+    height: 40px;
+	border:0px solid red;
+    cursor: pointer;
+	text-align:center;
+	justify-content:center;
+	align-items: center;         
+    display: flex; 
+	font-size:18px;
+	 animation: pulse 1s infinite ease-in-out;
+}
+#caveInterior1 img{
+width: auto; height: auto; border-radius: 4px;
+}
+#caveDoor1
+{
+  position: absolute;
+  top: 61.9%;
+  left: 39%;
+  width: 70px;
+  height: 110px;
+  border:0px solid green;
+  cursor: pointer;
+}
+
+#caveInterior2 {
+  display: none;
+  position: absolute;
+  bottom: 37.71%;   /* use % not px */
+  right: 8.2%;
+  z-index: 5;
+  transition: filter 0.3s ease;
+}
+#caveInterior2exit
+{
+    position: absolute;
+    top:80%;
+    right: 24%;
+    width: 120px;
+    height: 120px;
+	border:0px solid red;
+    cursor: pointer;
+}
+#caveInterior2 img{
+width: auto; height: auto;
+}
+#caveDoor2
+{
+  position: absolute;
+  bottom: 38.11%;   /* use % not px */
+  right: 10.11%;
+  width: 20px;
+  height: 22px;
+  cursor: pointer;  z-index:6
+}
+
+/* Gnome1 */
+
+.secret-qm1 {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(131, 116, 1, 0.8);
+  background-color:rgba(247, 225, 54, 0.36);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 6;
+  cursor: pointer;
+  border-radius:100%; opacity: 0;
+}
+
+.secret-qm1.revealed {
+  opacity: 1;
+}
+
+#gnomeReveal1 {
+  position: absolute;
+  top: 7.6%; /* change this to your gnome location */
+  left: 82.2%;
+  width: 120px;
+  height: auto;
+  z-index: 10;
+  opacity:0
+}
+
+#gnomeReveal1.found {
+  filter: drop-shadow(0 0 10px gold);
+}
+
+/* Gnome2 */
+
+.secret-qm2 {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(131, 116, 1, 0.8);
+  background-color:rgba(37, 134, 136, 0.84);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 6;
+  cursor: pointer;
+  border-radius:100%; opacity: 0;
+}
+
+.secret-qm2.revealed {
+  opacity: 1;
+}
+
+#gnomeReveal2 {
+  position: absolute;
+  top: 42.3%; /* change this to your gnome location */
+  left: 0%;
+  width: 70px;
+  height: auto;
+  z-index: 10;
+  opacity:0
+}
+
+#gnomeReveal2.found {
+  filter: drop-shadow(0 0 10px gold);
+}
+
+/* Gnome3 */
+
+.secret-qm3 {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(131, 116, 1, 0.8);
+  background-color:rgba(247, 225, 54, 0.36);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 6;
+  cursor: pointer;
+  border-radius:100%; opacity: 0;
+}
+
+.secret-qm3.revealed {
+  opacity: 1;
+}
+
+#gnomeReveal3 {
+  position: absolute;
+  top: 22.3%; /* change this to your gnome location */
+  left: 16.8%;
+  width: 260px;
+  height: auto;
+  z-index: 10;
+  opacity:0
+}
+
+#gnomeReveal3.found {
+  filter: drop-shadow(0 0 10px gold);
+}
+
+
+/* Animations */ 
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+@-webkit-keyframes pulse {
+  0% { -webkit-transform: scale(1); }
+  50% { -webkit-transform: scale(1.15); }
+  100% { -webkit-transform: scale(1); }
+}
+
+/* Data IDs for specific sized click boxes */
+
+
+[data-id="obj2"] {width: 60px; height: 60px}
+[data-id="qm13"], [data-id="qm14"] {display:none}
