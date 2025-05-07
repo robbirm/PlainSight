@@ -16,6 +16,14 @@
     { id: 'obj13', top: '46.9%', left: '61.5%', hint: 'First the worst, second the best' },
     { id: 'obj14', top: '82.9%', left: '7.4%', hint: 'Buried treasure?' },
     { id: 'obj15', top: '61.05%', left: '89%', hint: 'Mr mouse didnt expect visitors' },
+	{ id: 'obj16', top: '61.05%', left: '89%', hint: 'Caught in the fence' },
+	{ id: 'obj17', top: '61.05%', left: '89%', hint: '' },
+	{ id: 'obj18', top: '61.05%', left: '89%', hint: 'A screaming tree!' },
+	{ id: 'obj19', top: '61.05%', left: '89%', hint: '' },
+	{ id: 'obj20', top: '61.05%', left: '89%', hint: '' },
+	{ id: 'obj21', top: '61.05%', left: '89%', hint: 'Coconuts growing in a tree' },
+	{ id: 'obj22', top: '61.05%', left: '89%', hint: '' },
+	{ id: 'obj23', top: '61.05%', left: '89%', hint: '' },
 		
   ];
 

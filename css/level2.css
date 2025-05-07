@@ -15,6 +15,21 @@
   transition: filter 0.3s ease;
 }
 
+/*Animated Items*/
+
+    .windmill {
+      width: 550px;
+      height: auto;
+      position: absolute;
+      top: 26.3%; /* adjust as needed */
+      left:1.8%; /* adjust as needed */
+      animation: windmillRotate 5s linear infinite;
+      transform-origin: center center;
+      pointer-events: none;
+      z-index: 20;
+    }
+
+
 /*Interactables */
 
 #shotTarget{  display: none;
@@ -27,18 +42,18 @@
 #houseInterior1 {
   display: none;
   position: absolute;
-  top: 28.19%;   /* use % not px */
-  left: 63.15%;
+  top: 52.14%;   /* use % not px */
+  left: 5.104%;
   z-index: 5;
   transition: filter 0.3s ease;
 }
 #houseInterior1exit
 {
     position: absolute;
-    top: 60%;
-    left: 21%;
-    width: 120px;
-    height: 120px;
+    top: 31.1%;
+    left:26.5%;
+    width: 70px;
+    height: 130px;
 	border:0px solid red;
     cursor: pointer;
 }
@@ -48,11 +63,12 @@ width: auto; height: auto; border-radius: 4px;
 #houseDoor1
 {
   position: absolute;
-  top: 39.5%;
-  left: 75%;
+  top: 56.1%;
+  left: 14.6%;
   width: 70px;
-  height: 110px;
+  height: 130px;
   cursor: pointer;
+  border:0px solid red
 }
 #obj {
 	display:none;
@@ -248,3 +264,14 @@ width: auto; height: auto;
 
 [data-id="obj2"] {width: 60px; height: 60px}
 [data-id="qm13"], [data-id="qm14"] {display:none}
+
+
+/*Animations*/
+    @keyframes windmillRotate {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }

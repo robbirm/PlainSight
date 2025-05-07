@@ -11,40 +11,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Atma:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-  <style>
-    .sprite-container {
-      width: 750px;
-      height: 1400px;
-      overflow: hidden;
-      position: absolute;
-      top: 20px; /* adjust position as needed */
-      left: 20px;
-      z-index: 10;
-      pointer-events: none;
-    }
-
-    .sprite {
-      background: url('backgrounds/level2/Windmill.jpg') no-repeat;
-      width: 3000px; /* 4 frames * 750px */
-      height:1400px;
-      animation: windmillCycle 4s steps(4) infinite;
-    }
-
-    @keyframes windmillCycle {
-      from {
-        transform: translateX(0);
-      }
-      to {
-        transform: translateX(-3000px);
-      }
-    }
-  </style>
 </head>
 
 <body data-level="level1">
 
 <div class="game-container" id="game">
+
+  <!-- Animated Items OUTSIDE #imageWrapper -->
+  <img src="backgrounds/level2/Windmill2.png" class="windmill" alt="Windmill">
 
   <!-- Game Wrapper -->
   <div id="imageWrapper">
