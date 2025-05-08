@@ -181,6 +181,10 @@ body::before {
       filter: none;
     }
 	
+	.level-row.locked {
+  opacity: 0.4;
+  pointer-events: none;
+}
 
 /* Animations */ 
 

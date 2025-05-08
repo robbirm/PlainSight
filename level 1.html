@@ -2,85 +2,95 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  
   <title>Plain Sight</title>
-  <link rel="stylesheet" href="css\styles-main.css">
-  <link rel="stylesheet" href="css\menu.css">
-  <link rel="stylesheet" href="css\level1.css">
+  <link rel="stylesheet" href="css/styles-main.css">
+  <link rel="stylesheet" href="css/menu.css">
+  <link rel="stylesheet" href="css/level1.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Atma:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Atma:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body data-level="level1">
 
 <div class="game-container" id="game">
 
-<!--Start of Game Wrapper -->
+  <!-- Game Wrapper -->
   <div id="imageWrapper">
     <img src="backgrounds/level 1.jpg" class="game-image" id="gameImage">
-    <!-- Click zones will be added dynamically -->
-	<!-- Clickable Objects Events -->
-<div id="houseInterior1">
-  <img src="backgrounds/level1/house-interior1.png"/>
-  <div id="houseInterior1exit"></div>
- <!-- Inside House -->
- 
-</div>
-  
-  <div id="caveInterior1">
-  <img src="backgrounds/level1/cave-interior1.png"/>
-  <div id="caveInterior1exit">Exit Cave</div>
- <!-- Inside Cave -->
- </div>
- 
-  <div id="caveInterior2">
-  <img src="backgrounds/level1/cave-interior2.png"/>
-  <div id="caveInterior2exit"></div>
- <!-- Inside Cave -->
- </div> 
 
-<div id="shotTarget">
-  <img src="backgrounds/level1/shotTarget.png"/>
-</div>
- 
-<!-- Clickable Objects -->
-<div id="houseDoor1"></div>
- <div id="caveDoor1"></div>
- <div id="caveDoor2"></div>
-</div>
+    <!-- House Interior -->
+    <div id="houseInterior1">
+      <img src="backgrounds/level1/house-interior1.png"/>
+      <div id="houseInterior1exit"></div>
+    </div>
 
-<div id="popupOverlay" class="popup-overlay" style="display:none;">
-  <div class="popup-content">
-    <span id="popupClose" class="popup-close">✖</span>
-    <img id="popupImage" src="" alt="Hidden item">
+    <!-- Cave Interiors -->
+    <div id="caveInterior1">
+      <img src="backgrounds/level1/cave-interior1.png"/>
+      <div id="caveInterior1exit">Exit Cave</div>
+    </div>
+
+    <div id="caveInterior2">
+      <img src="backgrounds/level1/cave-interior2.png"/>
+      <div id="caveInterior2exit"></div>
+    </div> 
+
+    <div id="shotTarget">
+      <img src="backgrounds/level1/shotTarget.png"/>
+    </div>
+
+    <!-- Clickable Objects -->
+    <div id="houseDoor1"></div>
+    <div id="caveDoor1"></div>
+    <div id="caveDoor2"></div>
+  </div>
+
+  <!-- Popup Overlay -->
+  <div id="popupOverlay" class="popup-overlay" style="display:none;">
+    <div class="popup-content">
+      <span id="popupClose" class="popup-close">✖</span>
+      <img id="popupImage" src="" alt="Hidden item">
+    </div>
+  </div>
+
+  <!-- Checklist Panel -->
+  <div class="checklist-panel" id="checklistPanel">
+    <div class="checklist-title">Hidden Items</div>
+    <div id="hintList"></div>
   </div>
 </div>
-<!-- Checklist Panel  -->
-<div class="checklist-panel" id="checklistPanel">
 
-  <div class="checklist-title">Hidden Items</div>
-  <div id="hintList"></div>
-</div>
-<!--End of Game Wrapper -->
-</div>
-
+<!-- Progress Bar & Level Icons -->
 <div class="progress-bar-overlay">
- <div class="progress-bar-container">
+  <div class="progress-bar-container">
     <div class="progress-bar" id="progressBar"></div>
   </div>
 
- <div class="level-icons-overlay">
-  <div class="badge" data-level="level1"><img src="icons/trophy.png" alt="Level Complete"></div>
-  <div class="badge" data-gnome="level1.1"><img src="icons/gnome.png" alt="Gnome Found"></div>
-  <div class="badge" data-gnome="level1.2"><img src="icons/gnome.png" alt="Gnome Found"></div>
-  <div class="badge" data-gnome="level1.3"><img src="icons/gnome.png" alt="Gnome Found"></div>
-  <div class="badge" data-extra="galaxy"><img src="icons/galaxy.png" alt="Galaxy Found"></div>
-</div> 
+  <div class="level-icons-overlay">
+    <div class="badge" data-level="level1">
+      <img class="badge-icon" src="icons/trophy.png" alt="Level Complete">
+    </div>
+    <div class="badge" data-gnome="level1.1">
+      <img class="badge-icon" src="icons/gnome.png" alt="Gnome Found">
+    </div>
+    <div class="badge" data-gnome="level1.2">
+      <img class="badge-icon" src="icons/gnome.png" alt="Gnome Found">
+    </div>
+    <div class="badge" data-gnome="level1.3">
+      <img class="badge-icon" src="icons/gnome.png" alt="Gnome Found">
+    </div>
+    <div class="badge" data-extra="galaxy">
+      <img class="badge-icon" src="icons/galaxy.png" alt="Galaxy Found">
+    </div>
+  </div>
 </div>
 
-  <!-- Floating Buttons -->
-<button class="menu-button" onclick="toggleMenuPanel()"><img src="icons\home.png"/></button>
-<button class="items-button" onclick="toggleChecklist()"><img id="treasureOpen" src="icons\treasureOpen.png"/><img id="treasureClosed" src="icons\treasureClosed.png"/></button>
+<!-- Floating Buttons -->
+<button class="menu-button" onclick="toggleMenuPanel()"><img src="icons/home.png"/></button>
+<button class="items-button" onclick="toggleChecklist()">
+  <img id="treasureOpen" src="icons/treasureOpen.png"/>
+  <img id="treasureClosed" src="icons/treasureClosed.png"/>
+</button>
 
 <!-- Menu Panel -->
 <div class="menu-panel" id="menuPanel">
@@ -90,12 +100,9 @@
   <button onclick="exitGame()"><p>Exit</p></button>
 </div>
 
-  
-  
 <!-- Audio -->
-
-<audio id="openSound" src="sounds/doorOpen.mp3"> </audio>
-<audio id="brushSound" src="sounds/brush.mp3"> </audio>
+<audio id="openSound" src="sounds/doorOpen.mp3"></audio>
+<audio id="brushSound" src="sounds/brush.mp3"></audio>
 <audio id="closeSound" src="sounds/doorClose.mp3"></audio>
 <audio id="foundSound" src="sounds/crunch.mp3"></audio>
 <audio id="squeakSound" src="sounds/squeak.mp3"></audio>
@@ -105,13 +112,11 @@
 <audio id="qmSound" src="sounds/qm.mp3"></audio>
 
 <!-- Scripts -->
-
-<script src="script\savedata.js"></script>
-<script src="script\level 1.js"></script>
-
-<script src="script\hints.js"></script>
-<script src="script\menu.js"></script>
-<script src="script\level1gnome.js"></script>
+<script src="script/savedata.js"></script>
+<script src="script/level 1.js"></script>
+<script src="script/hints.js"></script>
+<script src="script/menu.js"></script>
+<script src="script/level1gnome.js"></script>
 
 </body>
 </html>

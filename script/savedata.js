@@ -17,41 +17,43 @@ window.checkCompletion = function(levelId) {
   return window.itemMap[levelId] && window.itemMap[levelId].every(id => found[id]);
 };
 
+// Add sparkle animation to unlocked badges
+function animateUnlockedBadges(selector, checkFn) {
+  document.querySelectorAll(selector).forEach(badge => {
+    if (checkFn(badge)) {
+      badge.classList.add('unlocked');
+      const img = badge.querySelector('.badge-icon');
+      if (img) {
+        img.classList.add('sparkle-animation');
+        setTimeout(() => img.classList.remove('sparkle-animation'), 2000);
+      }
+    } else {
+      badge.classList.remove('unlocked');
+    }
+  });
+}
+
 // Update all level/gnome/extra icons
 window.updateLevelIcons = function () {
   const progress = JSON.parse(localStorage.getItem('progress')) || {};
   const gnomes = JSON.parse(localStorage.getItem('gnomes')) || {};
   const extras = JSON.parse(localStorage.getItem('extras')) || {};
 
-  // Update trophy icons (completion)
-  document.querySelectorAll('[data-level]').forEach(badge => {
+  // Animate completion badges
+  animateUnlockedBadges('[data-level]', badge => {
     const level = badge.dataset.level;
     const found = progress[level] || {};
-    if (window.itemMap[level] && window.itemMap[level].every(id => found[id])) {
-      badge.classList.add('unlocked');
-    } else {
-      badge.classList.remove('unlocked');
-    }
+    return window.itemMap[level] && window.itemMap[level].every(id => found[id]);
   });
 
-  // Update gnome icons
-  document.querySelectorAll('[data-gnome]').forEach(badge => {
-    const gnomeKey = badge.dataset.gnome; // e.g., "level1.2"
-    if (gnomes[gnomeKey]) {
-      badge.classList.add('unlocked');
-    } else {
-      badge.classList.remove('unlocked');
-    }
+  // Animate gnome badges
+  animateUnlockedBadges('[data-gnome]', badge => {
+    return gnomes[badge.dataset.gnome];
   });
 
-  // Update extras (e.g., galaxy)
-  document.querySelectorAll('[data-extra]').forEach(badge => {
-    const key = badge.dataset.extra;
-    if (extras[key]) {
-      badge.classList.add('unlocked');
-    } else {
-      badge.classList.remove('unlocked');
-    }
+  // Animate extras (e.g., galaxy, extreme)
+  animateUnlockedBadges('[data-extra]', badge => {
+    return extras[badge.dataset.extra];
   });
 };
 

@@ -1,4 +1,4 @@
-let currentLevel = null;
+    let currentLevel = null;
 
     function openLevelTab(level) {
       const progress = JSON.parse(localStorage.getItem('progress')) || {};
@@ -47,6 +47,7 @@ let currentLevel = null;
         const img = document.createElement("img");
         img.src = icon.src;
         img.alt = icon.key;
+        img.classList.add("badge-icon"); // ✅ Proper class
 
         const isTrophy = icon.key.startsWith("level") && !icon.key.includes(".");
         const isUnlocked = isTrophy
@@ -54,7 +55,8 @@ let currentLevel = null;
           : gnomeData[icon.key] || extrasData[icon.key];
 
         if (isUnlocked) {
-          img.classList.add("unlocked");
+          img.classList.add("unlocked", "sparkle-animation");
+          setTimeout(() => img.classList.remove("sparkle-animation"), 1500);
         }
 
         levelIcons.appendChild(img);
@@ -65,7 +67,7 @@ let currentLevel = null;
       const progress = JSON.parse(localStorage.getItem('progress')) || {};
       const gnomeData = JSON.parse(localStorage.getItem('gnomes')) || {};
 
-      for (let level = 1; level <= 5; level++) {
+      for (let level = 1; level <= 15; level++) {
         const marker = document.querySelector(`.marker[onclick="openLevelTab(${level})"]`);
         if (!marker) continue;
 
