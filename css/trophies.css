@@ -94,3 +94,71 @@
       filter: none;
     }
 	
+	
+	
+	
+	/* Layout */
+	
+	.gnome-level {
+  margin-bottom: 30px;
+}
+
+.gnome-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.gnome-modal img {
+  max-width: 60vw;
+  max-height: 60vh;
+}
+
+.gnome-flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.gnome-level {
+
+  padding: 5px;
+  border-radius: 12px;
+  width: 200px;
+  text-align: center;
+}
+
+.gnome-level h3 {
+  margin-bottom: 10px;
+  font-size: 24px;
+}
+
+.level-flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.level-box {
+  padding: 5px;
+  border-radius: 12px;
+  width: 120px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* This centers the badge horizontally */
+}
+
+.level-box h3 {
+  margin-bottom: 10px;
+  font-size: 24px;
+}
