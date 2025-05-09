@@ -209,7 +209,10 @@ if (gnomeWasClicked2) {
 //
 
 const secretTriggers3 = [
-  { id: 'qm1', top: '27.7%', left: '9.6%' },
+  { id: 'qm15', top: '55%', left: '43.2%', },
+  { id: 'qm16', top: '10.9%', left: '97.6%' },
+  { id: 'qm17', top: '9.4%', left: '28.6%' },
+  { id: 'qm18', top: '67%', left: '82.7%' },
 ];
 
 let foundSecrets3 = 0;
@@ -239,7 +242,7 @@ secretTriggers3.forEach(obj => {
       foundQMs3[obj.id] = true;
 	  		    qmSound.currentTime = 0;
     qmSound.play();
-      localStorage.setItem('foundQMs_level1.2', JSON.stringify(foundQMs2));
+      localStorage.setItem('foundQMs_level1.3', JSON.stringify(foundQMs3));
       checkAllSecretsFound3();
     }
   });
@@ -298,3 +301,62 @@ if (gnomeWasClicked3) {
   updateLevelIcons();
 
 }
+
+// Galaxy Stuff
+const correctCombo = [1, 3, 5, 6, 7, 9];
+const savedButtons = JSON.parse(localStorage.getItem('activeGalaxyButtons')) || [];
+let activeButtons = new Set(savedButtons);
+
+const galaxyHintImage = document.getElementById('galaxyHintImage');
+const badgeIcon = document.querySelector('[data-extra="galaxy"] img');
+
+// Restore toggle states
+document.querySelectorAll('.galaxy-btn').forEach(btn => {
+  const id = parseInt(btn.getAttribute('data-id'));
+  if (activeButtons.has(id)) {
+    btn.classList.add('active');
+  }
+
+  btn.addEventListener('click', () => {
+    if (activeButtons.has(id)) {
+      activeButtons.delete(id);
+      btn.classList.remove('active');
+    } else {
+      activeButtons.add(id);
+      btn.classList.add('active');
+    }
+
+    localStorage.setItem('activeGalaxyButtons', JSON.stringify([...activeButtons]));
+    checkGalaxyUnlock();
+  });
+});
+
+checkGalaxyUnlock(); // Run on load
+
+function checkGalaxyUnlock() {
+  const isCorrect = correctCombo.every(id => activeButtons.has(id)) &&
+                    activeButtons.size === correctCombo.length;
+
+  galaxyHintImage.style.display = isCorrect ? 'block' : 'none';
+
+  // Restore glow if previously unlocked
+  if (localStorage.getItem('galaxyUnlocked') === 'true') {
+    galaxyHintImage.classList.add('glow');
+  }
+}
+
+// Handle clicking the revealed galaxy image
+galaxyHintImage.addEventListener('click', () => {
+  if (!localStorage.getItem('galaxyUnlocked')) {
+    localStorage.setItem('galaxyUnlocked', 'true');
+
+    const extras = JSON.parse(localStorage.getItem('extras')) || {};
+    extras['galaxy'] = true;
+    localStorage.setItem('extras', JSON.stringify(extras));
+
+    updateLevelIcons();
+  }
+
+  galaxyHintImage.classList.add('glow'); // Add glow on click
+});
+

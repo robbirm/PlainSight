@@ -135,8 +135,8 @@ width: auto; height: auto;
   position: absolute;
   width: 40px;
   height: 40px;
-  border: 1px solid rgba(131, 116, 1, 0.8);
-  background-color:rgba(247, 225, 54, 0.36);
+  border: 5px solid rgba(131, 116, 1, 0.8);
+
   opacity: 0;
   transition: opacity 0.3s ease;
   z-index: 6;
@@ -168,8 +168,8 @@ width: auto; height: auto;
   position: absolute;
   width: 40px;
   height: 40px;
-  border: 1px solid rgba(131, 116, 1, 0.8);
-  background-color:rgba(37, 134, 136, 0.84);
+  border: 5px solid rgba(131, 116, 1, 0.8);
+
   opacity: 0;
   transition: opacity 0.3s ease;
   z-index: 6;
@@ -201,13 +201,12 @@ width: auto; height: auto;
   position: absolute;
   width: 40px;
   height: 40px;
-  border: 1px solid rgba(131, 116, 1, 0.8);
-  background-color:rgba(247, 225, 54, 0.36);
+  border: 5px solid rgba(147, 24, 88, 0.8);
   opacity: 0;
   transition: opacity 0.3s ease;
   z-index: 6;
   cursor: pointer;
-  border-radius:100%; opacity: 0;
+  border-radius:100%; opacity: 1;
 }
 
 .secret-qm3.revealed {
@@ -216,20 +215,72 @@ width: auto; height: auto;
 
 #gnomeReveal3 {
   position: absolute;
-  top: 22.3%; /* change this to your gnome location */
-  left: 16.8%;
-  width: 260px;
+  top: 49.8%; /* change this to your gnome location */
+  left: 26.8%;
+  width: 70px;
   height: auto;
   z-index: 10;
-  opacity:0
+  opacity:0;
+  display:none
 }
 
 #gnomeReveal3.found {
   filter: drop-shadow(0 0 10px gold);
 }
 
+.galaxy-btn {
+  position: absolute;
+  width: auto;
+  height: auto;
+  cursor: pointer;
+  opacity: 0
+;
+  transition: opacity 0.3s ease;
+}
 
+/* Example placement — adjust each button individually */
+#btn1 { top: 95.75%; left: 65.7%; }
+#btn2 { top: 95.45%; left: 67.2%; }
+#btn3 { top: 95.15%; left: 68.8%; }
+#btn4 { top: 94.85%; left: 70.37%; }
+#btn5 { top: 94.55%; left: 72.2%; }
+#btn6 { top: 94.05%; left: 75.2%; }
+#btn7 { top: 93.86%; left: 76.8%; }
+#btn8 { top: 93.55%; left: 78.6%; }
+#btn9 { top: 93.35%; left: 80.2%; }
+
+.galaxy-btn.active {
+  opacity: 1;
+}
+
+#galaxyHintImage {
+  position: absolute;
+  width: 29px;
+  height: 27px;
+  background: url('../backgrounds/level1/galaxy-reveal.png') no-repeat;
+  background-size: cover;
+  image-rendering: pixelated;
+  animation: spinGalaxy 1s steps(4) infinite;
+  cursor: pointer;
+  display: none;
+  z-index: 10;
+  top: 89.5%;  /* adjust as needed */
+  left: 74.6%;
+}
+#galaxyHintImage.glow {
+  box-shadow: 0 0 20px 10px rgba(238, 237, 185, 1);
+  border-radius: 20px;
+}
 /* Animations */ 
+
+@keyframes spinGalaxy {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -116px 0; /* moves full width of sprite sheet */
+  }
+}
 
 @keyframes pulse {
   0% { transform: scale(1); }
@@ -247,4 +298,4 @@ width: auto; height: auto;
 
 
 [data-id="obj2"] {width: 60px; height: 60px}
-[data-id="qm13"], [data-id="qm14"] {display:none}
+[data-id="qm13"], [data-id="qm14"], [data-id="qm15"] {display:none}
